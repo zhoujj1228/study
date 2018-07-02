@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd"> 
+	
+	<!-- 旧版本构造器输入
+	<bean id="mp3Player" class="chapter2.autoPack.MP3Player">
+		<constructor-arg ref="song"/>
+	</bean> -->
+	
+	<!-- 新版本构造器输入 ，其中c命名空间要在beans标签声明-->
+	<!-- 按参数名构造 -->
+	<bean id="mp3Player" class="chapter2.autoPack.MP3Player" c:song-ref="song" />
+	
+	<!-- 按参数序号构造 -->
+	<!-- <bean id="mp3Player" class="chapter2.autoPack.MP3Player" c:_0-ref="song" /> -->
+	
+	
+	<!-- 使用list作为实现 -->
+	<bean id="song" class="chapter2.autoPack.Song">
+		<!-- 使用列表，只能通过构造器参数，不能用c命名空间
+		<constructor-arg>
+			<List>
+				<ref bean="song1"/>
+				<ref bean="song2"/>
+				<ref bean="song3"/>
+				<ref bean="song4"/>
+			</List>
+		</constructor-arg> -->
+		
+		<!-- 使用字面量-->
+		<!-- <constructor-arg value="七里香"/>  -->
+	</bean>
+	
+	<!-- 旧版本使用属性注入 -->
+	<!-- <bean id="mp3Player" class="chapter2.autoPack.MP3Player">
+		<property name="song" ref="song"/>
+		使用列表，只能通过property，不能用p命名空间
+		<property name="songs">
+			<List>
+				<ref bean="song1"/>
+				<ref bean="song2"/>
+				<ref bean="song3"/>
+				<ref bean="song4"/>
+			</List>
+		</property>
+		
+		使用字面量
+		<property name="mySong" value="七里香"/> 
+	</bean> -->
+	
+	<!-- 新版本使用属性输入 ，其中p命名空间要在beans标签声明-->
+	<!-- <bean id="mp3Player" class="chapter2.autoPack.MP3Player" p:song-ref="song" /> -->
+	
+	<!--使用util命名空间,里面包括list,map,constant,property,set等 -->
+	<!--
+	<util:list id="songList">
+		<value>"123"</value>
+		<value>"456"</value>
+		<ref bean="song1"/>
+		<ref bean="song2"/>
+		<ref bean="song3"/>
+		<ref bean="song4"/>
+	</util:list>
+	
+	<bean id="mp3Player" class="chapter2.autoPack.MP3Player" p:songs-ref="songList" />-->
+	
+</beans>

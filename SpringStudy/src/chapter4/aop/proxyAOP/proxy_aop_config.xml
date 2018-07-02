@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd"> 
+		
+	<import resource="classpath:/chapter2/xmlPack/config_player.xml" />
+	
+	<!-- 定义通知内容 -->
+	<bean id="mp3PlayerHelper" class="chapter4.aop.proxyAOP.Mp3PlayerHelper"/>
+	
+	<!-- 定义切入点 -->
+	<bean id="playPointCut" class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+		<property name="pattern" value=".*play" />
+	</bean>
+	
+	<!-- 定义切面 -->
+	<bean id="playerHelperAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="mp3PlayerHelper" />
+		<property name="pointcut" ref="playPointCut" />
+	</bean>
+	
+	<bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!-- 代理的对象 -->
+		<property name="target" ref="mp3Player"/>
+		<!-- 使用切面 -->
+		<property name="interceptorNames" value="playerHelperAdvisor"/>
+		<!-- 代理接口 -->
+		<property name="proxyInterfaces" value="chapter2.autoPack.IMediaPlayer"/>
+	</bean>
+</beans>

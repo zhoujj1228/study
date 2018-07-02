@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop.xsd">  
+	
+	<context:component-scan base-package="chapter4.aop.pojoAOP" />
+	
+	<aop:aspectj-autoproxy />
+
+	<bean id="mediaPlayerHelper" class="chapter4.aop.pojoAOP.MediaPlayerHelper"></bean>
+	
+	<aop:config>
+		<aop:aspect ref="mediaPlayerHelper">
+			<!-- 定义一个切点,并使用该切点 -->
+			<aop:pointcut id="mypointcut" expression="execution(* chapter4.aop.pojoAOP.bean.*.play(..))"/>
+			<aop:before pointcut-ref="mypointcut" method="before1"/>
+			
+			<!-- bean包的任意类的play方法 -->
+			<aop:before pointcut="execution(* chapter4.aop.pojoAOP.bean.*.play(..))" method="before"/>
+			
+			<!-- aop下任意包的任意类的play方法 -->
+			<aop:after pointcut="execution(* chapter4.aop..*.play(..))" method="after" />
+			<aop:after-returning pointcut="execution(* chapter4.aop..*.play(..))" method="afterReturning" />
+			<aop:after-throwing pointcut="execution(* chapter4.aop..*.play(..))" method="afterThrowing" />
+			<aop:around pointcut="execution(* chapter4.aop..*.play(..))" method="around" />
+			
+			<!-- 传入参数 -->
+			<aop:around pointcut="execution(* chapter4.aop..*.outputSongName(String,int)) and args(name,id)" method="around1" />
+		</aop:aspect>
+	</aop:config>
+	
+</beans>
