@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd"> 
+	
+	<!-- <import resource="chapter2/xmlPack/config_player.xml" /> -->
+	
+	
+	<!-- 用于启动组件扫描-->
+	<context:component-scan base-package="test_hello" /> 
+	
+	<!-- 不怎么清楚，但是好像<mvc:default-servlet-handler/>启用需要 ，验证后发现不需要-->
+	<!-- <mvc:annotation-driven /> -->
+	
+	<!-- 用于把静态资源交予default servlet进行处理 -->
+	<mvc:default-servlet-handler/>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+</beans>
