@@ -1,4 +1,4 @@
-package study.rabbitmq.example.publishandsubscribe;
+package study.rabbitmq.example.fanout;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
