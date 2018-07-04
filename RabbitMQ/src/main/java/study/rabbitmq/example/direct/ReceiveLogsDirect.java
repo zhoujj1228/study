@@ -1,4 +1,4 @@
-package study.rabbitmq.example.routing;
+package study.rabbitmq.example.direct;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
