@@ -13,7 +13,10 @@ public class Recv {
 
   public static void main(String[] argv) throws Exception {
     ConnectionFactory factory = new ConnectionFactory();
-    factory.setHost("localhost");
+    factory.setHost("192.168.241.128");
+    factory.setUsername("test");
+    factory.setPassword("test");
+    //factory.setVirtualHost("/");
     Connection connection = factory.newConnection();
     Channel channel = connection.createChannel();
 
