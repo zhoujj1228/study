@@ -14,11 +14,12 @@ public class ReceiveLogsDirect {
 	  factory.setUsername("test");
 	  factory.setPassword("test");
 	  Connection connection = factory.newConnection();
-	  Channel channel = connection.createChannel();
+	  Channel channel 		= connection.createChannel();
 
 	  channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
 	  String queueName = channel.queueDeclare().getQueue();
-
+	  
+	  
 	  if (argv.length < 1){
 	    System.err.println("Usage: ReceiveLogsDirect [info] [warning] [error]");
 	    System.exit(1);
@@ -27,7 +28,7 @@ public class ReceiveLogsDirect {
 	  for(String severity : argv){
 	    channel.queueBind(queueName, EXCHANGE_NAME, severity);
 	  }
-	  System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
+	  System.out.println(" [*] Waiting for messages. To exit press CTRL+C, queueName:" + queueName);
 
 	  Consumer consumer = new DefaultConsumer(channel) {
 	    @Override
