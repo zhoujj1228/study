@@ -14,9 +14,11 @@ public class EmitLogDirect {
   private static final String EXCHANGE_NAME = "direct_logs";
 
   public static void main(String[] argv) throws Exception {
-
+    argv = new String[]{"info", "hello mq"};
     ConnectionFactory factory = new ConnectionFactory();
-    factory.setHost("localhost");
+    factory.setHost("192.168.241.128");
+    factory.setUsername("test");
+    factory.setPassword("test");
     Connection connection = factory.newConnection();
     Channel channel = connection.createChannel();
 
