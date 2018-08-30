@@ -1,4 +1,4 @@
-package springdb;
+package springdb.jdbcTemplate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -19,7 +19,7 @@ public class SpringDBTest {
 	private void call() {
 		ApplicationContext springContext = SpringContextUtil.getAnnotationSpringContext(SpringDBConfig.class);
 		SpringDBTest sdbt = springContext.getBean(SpringDBTest.class);
-		sdbt.getUs().test();
+		sdbt.getUs().transaction();
 	}
 	
 	
