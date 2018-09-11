@@ -16,5 +16,6 @@
 <a href="<c:url value="/testControllerExceptionHandler" />">testControllerExceptionHandler</a> |
 <a href="<c:url value="/testPlaceHolderRedirect" />">testControllerExceptionHandler</a> |
 <a href="<c:url value="/testFlashAttrRedirect" />">testControllerExceptionHandler</a> |
+<a href="<c:url value="/registerbylist" />">registerbylist</a> |
 </body> 
 </html>

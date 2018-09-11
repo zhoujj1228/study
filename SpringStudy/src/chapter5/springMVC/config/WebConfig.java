@@ -25,13 +25,14 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 	//配置JSP视图解析器
 	@Bean
 	public ViewResolver viewResolver(){
+        System.out.println("---------------WebConfig viewResolver");
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
 		resolver.setExposeContextBeansAsAttributes(true);
 		
 		//如果需要JSP使用JSTL标签进行处理格式化和信息的话,需要将视图解析为JstlView
-		//resolver.setViewClass(org.springframework.web.servlet.view.JstlView.class);
+		resolver.setViewClass(org.springframework.web.servlet.view.JstlView.class);
 		
 		return resolver;
 	}
@@ -40,14 +41,14 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer){
 		configurer.enable();
-		System.out.println("---------------configureDefaultServletHandling123");
+		System.out.println("---------------WebConfig configureDefaultServletHandling");
 	}
 	
 	//使用servlet3.0时使用以下MultipartResolver
-	@Bean
+	/*@Bean
 	public MultipartResolver multipartResolver(){
 		return new StandardServletMultipartResolver();
-	}
+	}*/
 	
 	/*//不使用servlet3.0时使用以下MultipartResolver
 	@Bean

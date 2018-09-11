@@ -1,4 +1,4 @@
-package chapter5.springMVC.web.servlet;
+/*package chapter5.springMVC.web.servlet;
 
 import javax.servlet.Filter;
 import javax.servlet.MultipartConfigElement;
@@ -13,6 +13,8 @@ public class MyServletInitializer implements WebApplicationInitializer{
 
 	@Override
 	public void onStartup(ServletContext servletcontext) throws ServletException {
+	    System.out.println("---------------MyServletInitializer onStartup");
+	    
 		//添加自定义servlet
 		Dynamic myServlet = servletcontext.addServlet("myServlet", MyServlet.class);
 		myServlet.addMapping("/myServlet");
@@ -22,11 +24,11 @@ public class MyServletInitializer implements WebApplicationInitializer{
 		javax.servlet.FilterRegistration.Dynamic myFilter = servletcontext.addFilter("myFilter", MyFilter.class);
 		myFilter.addMappingForUrlPatterns(null, false, "/homepage/*");
 		
-		/*//在采用Servlet初始化类方法加载DispatcherServlet下,multipart最基本配置
+		//在采用Servlet初始化类方法加载DispatcherServlet下,multipart最基本配置
 		DispatcherServlet ds = new DispatcherServlet();
 		Dynamic springServlet = servletcontext.addServlet("springServlet", ds);
 		springServlet.addMapping("/");
-		springServlet.setMultipartConfig(new MultipartConfigElement("/tmp/multipart/"));*/
+		springServlet.setMultipartConfig(new MultipartConfigElement("/tmp/multipart/"));
 	}
 
-}
+}*/
