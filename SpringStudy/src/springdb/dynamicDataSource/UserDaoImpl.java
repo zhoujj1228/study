@@ -35,6 +35,7 @@ public class UserDaoImpl implements UserDao{
         for(User user : users){
             System.out.println("query test : " + user.getId() + "\t" + user.getName());
         }
+        System.out.println();
     }
 
     @Override
@@ -48,7 +49,7 @@ public class UserDaoImpl implements UserDao{
     @Override
     public void update() {
         this.jdbcTemplate.update(
-                "update userss set name = ? where name = ?",
+                "update users set name = ? where name = ?",
                 "jay22", "jay2");        
     }
 

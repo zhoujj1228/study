@@ -20,6 +20,7 @@ public class SpringDBTest {
 		ApplicationContext springContext = SpringContextUtil.getAnnotationSpringContext(SpringDBConfig.class);
 		SpringDBTest sdbt = springContext.getBean(SpringDBTest.class);
 		sdbt.getUs().transaction();
+        //sdbt.getUs().transactionDo();
 	}
 	
 	
