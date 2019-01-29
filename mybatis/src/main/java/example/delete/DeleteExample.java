@@ -15,7 +15,8 @@ public class DeleteExample {
 
     public static void main(String[] args) throws IOException {
         String configPath = "mybatis-config.xml";
-        SqlSession sqlSession = MybatisUtil.getSqlSession(configPath);
+        MybatisUtil.initSqlSessionFactory(null);
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
         
         UsersMapper usersMapper = sqlSession.getMapper(UsersMapper.class);
         

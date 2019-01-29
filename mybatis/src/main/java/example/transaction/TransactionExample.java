@@ -1,4 +1,4 @@
-package example.select;
+package example.transaction;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,16 +11,15 @@ import domain.UsersExample;
 import domain.UsersExample.Criteria;
 import util.MybatisUtil;
 
-public class SelectExample {
+public class TransactionExample {
 
     public static void main(String[] args) throws IOException {
         String configPath = "mybatis-config.xml";
-        MybatisUtil.initSqlSessionFactory(null);
+        MybatisUtil.initSqlSessionFactory(configPath);
         SqlSession sqlSession = MybatisUtil.getSqlSession();
         
         UsersMapper usersMapper = sqlSession.getMapper(UsersMapper.class);
         
-        selectByPrimaryKeyTest(usersMapper);
         selectByExampleTest(usersMapper);
         
         
@@ -36,12 +35,6 @@ public class SelectExample {
         for(Users user : users){
             System.out.println(user.getName());
         }
-        
-    }
-
-    private static void selectByPrimaryKeyTest(UsersMapper usersMapper) {
-        Users user = usersMapper.selectByPrimaryKey(4);
-        System.out.println(user.getName());
         
     }
 

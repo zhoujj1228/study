@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.*;
 @EnableAutoConfiguration
 public class Example {
 
-    @RequestMapping("/")
+    @RequestMapping("/home")
     String home() {
-        return "Hello World!";
+        System.out.println("Hello World!");
+        return "Hello World!!!!!!";
     }
 
     public static void main(String[] args) throws Exception {

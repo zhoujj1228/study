@@ -14,7 +14,8 @@ import util.MybatisUtil;
 public class UpdateExample {
     public static void main(String[] args) throws IOException {
         String configPath = "mybatis-config.xml";
-        SqlSession sqlSession = MybatisUtil.getSqlSession(configPath);
+        MybatisUtil.initSqlSessionFactory(configPath);
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
         
         UsersMapper usersMapper = sqlSession.getMapper(UsersMapper.class);
         start(usersMapper);

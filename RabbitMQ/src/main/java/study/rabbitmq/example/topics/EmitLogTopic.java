@@ -6,6 +6,20 @@ import com.rabbitmq.client.Channel;
 
 /**
  * TOPIC 主题交换器的使用，模糊匹配路由键。
+ * 
+	将消息路由到binding key与routing key模式匹配的队列中
+	
+	其中：
+	*(star)可以代替任意一个单词
+	#(hash)可以代替0个或多个单词
+	. 作为单词分隔符
+	
+	例子：
+	producer发布消息route key为：quick.orange.rabbit
+	
+	队列1使用binding key"*.orange.*"来绑定
+	队列2使用 "*.*.rabbit" 以及 lazy.# 绑定
+
  * @author Jay
  * @date 2018年7月3日
  */

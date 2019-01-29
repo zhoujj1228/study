@@ -10,7 +10,7 @@ public class ReceiveLogsDirect {
   public static void main(String[] argv) throws Exception {
 	  argv = new String[]{"info"};
 	  ConnectionFactory factory = new ConnectionFactory();
-	  factory.setHost("192.168.241.128");
+	  factory.setHost("192.168.111.200");
 	  factory.setUsername("test");
 	  factory.setPassword("test");
 	  Connection connection = factory.newConnection();

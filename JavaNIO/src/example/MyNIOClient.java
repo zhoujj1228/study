@@ -21,7 +21,7 @@ public class MyNIOClient {
 			// 实例化selector
 			selector = Selector.open();
 			// 绑定ip和端口
-			channel = SocketChannel.open(new InetSocketAddress("11.8.123.208",6666));
+			channel = SocketChannel.open(new InetSocketAddress("11.13.2.66",6666));
 			// 设置为非阻塞方式，如果为true那么就为传统的阻塞方式
 			channel.configureBlocking(false);
 			
@@ -55,7 +55,7 @@ public class MyNIOClient {
 					System.out.println("client接收到读请求");
 					SocketChannel sc = null;
 					sc = (SocketChannel) key.channel();
-					ByteBuffer b = ByteBuffer.allocate(1024);
+					ByteBuffer b = ByteBuffer.allocate(5);
 					int i;
 					try {
 						i = sc.read(b);
@@ -78,7 +78,7 @@ public class MyNIOClient {
 							e1.printStackTrace();
 						}
 					}
-					
+					//key.interestOps(SelectionKey.OP_WRITE);
 				}
 				
 				if(key.isWritable()){

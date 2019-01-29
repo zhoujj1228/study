@@ -48,7 +48,7 @@ public class MyNIOServer implements Runnable{
 			// 设置为非阻塞方式，如果为true那么就为传统的阻塞方式
 			serverChannel.configureBlocking(false);
 			//绑定ip和端口
-			serverChannel.socket().bind(new InetSocketAddress("11.8.123.208",6666));
+			serverChannel.socket().bind(new InetSocketAddress("11.13.2.66",6666));
 			//注册OP_ACCEPT事件
 			serverChannel.register(selector, SelectionKey.OP_ACCEPT);
 		} catch (IOException e) {
