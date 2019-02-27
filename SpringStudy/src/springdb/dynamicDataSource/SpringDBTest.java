@@ -9,8 +9,9 @@ import util.SpringContextUtil;
 @Component
 public class SpringDBTest {
 	@Autowired
-	UserService us;
+	UserService userService;
 	
+
 
 	public static void main(String[] args) {
 		new SpringDBTest().call();
@@ -19,16 +20,16 @@ public class SpringDBTest {
 	private void call() {
 		ApplicationContext springContext = SpringContextUtil.getAnnotationSpringContext(SpringDBConfig.class);
 		SpringDBTest sdbt = springContext.getBean(SpringDBTest.class);
-		sdbt.getUs().transaction();
+		sdbt.getUserService().transaction();
         //sdbt.getUs().transactionDo();
 	}
-	
-	
-	public UserService getUs() {
-		return us;
+
+	public UserService getUserService() {
+		return userService;
 	}
 
-	public void setUs(UserService us) {
-		this.us = us;
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
+	
 }
