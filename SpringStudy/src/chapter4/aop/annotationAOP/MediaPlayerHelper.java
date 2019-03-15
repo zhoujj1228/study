@@ -74,6 +74,7 @@ public class MediaPlayerHelper{
 		return;
 	}
 	
+	//该方法切入有参数有返回值的方法会出错
 	@Around("execution(* chapter4..*.play*(..))")
 	public void around(ProceedingJoinPoint jp){
 		try {
@@ -84,6 +85,15 @@ public class MediaPlayerHelper{
 			System.out.println("around afterThrow");
 			e.printStackTrace();
 		}
+	}
+	
+	//要使用这样的才能正常执行有参数有返回值的方法,不然在进行bean实例化就会报错,该方法也适用于无参数无返回值的方法，上面around会报错
+	@Around("execution(* chapter4..*.play*(..))")
+	public Object around2(ProceedingJoinPoint jp) throws Throwable {
+		System.out.println("around before");
+		Object proceed = jp.proceed(jp.getArgs());
+		System.out.println("around afterReturn");
+		return proceed;
 	}
 	
 	
