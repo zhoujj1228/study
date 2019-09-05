@@ -1,5 +1,7 @@
 package example;
 
+import java.util.HashMap;
+
 import init.RedisInitializer;
 import redis.clients.jedis.Jedis;
 import util.RedisHashUtil;
@@ -18,6 +20,7 @@ public class JedisExample {
 		System.out.println(rhu.getHash("jtestkey1", "jtestfield1"));*/
 		
 		RedisStringUtil rsu = new RedisStringUtil(jedis);
+		rsu.setString("test3","test3value");
 		System.out.println(rsu.getString("test3"));
 		
 	}
